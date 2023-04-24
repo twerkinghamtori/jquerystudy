@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      let colors = ["white","skyblue","black"]
+      let bcolors = ["skyblue","black","skyblue"]
+      // $("h1").each(function(i,h1) {
+      //   $(this).css("color",colors[i])
+      // })
+      // $.each(colors,function(i,c) {
+      //   $("h1:eq("+i+")").css("color",c)
+      // })
+      // $("h1").css("background","black")
+
+      //css를 이용하여 처리하기(css 자체에도 반복에 해당하는 function을 가지고 있음)
+      // $("h1").css("color",function(index) { //index = h1의 index
+      //   return colors[index]
+      // }).css("background","black")
+      $("h1").css({"color":function(index){
+        return colors[index]
+      },"background":function(i){
+        return bcolors[i]
+      }})
+      // $.each(colors,function(i,c) {
+      //   $("h1:eq("+i+")").css({"color":c,"background":"blue"})
+      // })
+      // $("h1").each(function(i,h1){
+      //   alert($(this).css("color")) //css요소를 alert창으로 순서대로 보여줌
+      // })
+    })
+  </script>
+</head>
+<body>
+  h1태그의 글자색을 red, yellow, purple 으로 설정하기
+  배경색을 검정색으로 설정.
+  <h1>Header_0:red</h1>
+  <h1>Header_1:yellow</h1>
+  <h1>Header_2:purple</h1>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>each 함수 : 반복문</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      let arr = [ //배열
+        {name:"구디",link:"http://www.gdu.co.kr"},
+        {name:"네이버",link:"http://www.naver.com"},
+        {name:"구글",link:"http://www.google.com"}
+      ]
+      let output="";
+      $.each(arr,function(i,item){ //item = {name:"구디",link:"http://www.gdu.co.kr"},
+        output += "<a href='"+item.link+"'>";
+        output += "<h3>"+(i+1)+"."+item.name+"</h3></a>"
+      })
+      $("#arr").html(output) //.html(값) = innerHTML="값" / .html() : innerHTML값 리턴
+
+      let obj = {name:"홍길동",loc:"율도국"} //obj(객체), name(멤버)
+      $.extend(obj,{part:"의적",gender:"남자"}) //객체에 새로운 멤버 추가(확장)
+      output = "";
+      //$.each(객체, 함수(key,value) {}) : key(멤버이름),value(멤버값) obj는 map객체?
+      $.each(obj, function(key,value) { 
+        output += key + ":" + value + "<br>"
+      })
+      $("#obj").html(output)
+    })
+  </script>
+</head>
+<body>
+  <div id="arr"></div>
+  <div id="obj"></div>
+</body>
+</html>

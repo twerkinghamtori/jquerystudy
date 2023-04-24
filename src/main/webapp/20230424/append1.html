@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동적으로 태그 추가하기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("<h1></h1>").html("Hello World").appendTo("body")
+      $("<img>").attr("src","clapDog.jpg").appendTo("body")
+      //body 태그 clapDog.jpg 이미지를 가로:200 세로:200인 이미지로 설정
+      $("<img>",{src:"clapDog.jpg",width:200,height:200}).appendTo("body") //속성에 문자열 표시해도되고 안해도 됨(ex. "src")
+      let h1="<h1>Header-1</h1>"
+      let h2="<h2>Header-2</h2>"
+      $("body").append(h1,h2,h1,h2)
+      //하위태그.appendTo(상위태그)
+      //상위태그.append(하위태그)
+    })
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

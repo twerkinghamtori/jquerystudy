@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!--cdn 방식(?) 여튼 Jquery를 쓰기위한 환경설정-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript">
+  //$(document).ready : window.onload = function() .. 
+  $(document).ready(function() {
+    //$("선택자")
+    $("*").css("color","pink")
+    $("p").css("color","blue")
+    $("h1").css("color","red")
+    $(".item").css("color","green")
+    $("#selected").css("color","orange")
+  })
+</script>
+<body>
+  <h1>Jquery1<p>Jquery1</p></h1>
+  <h1>Jquery1</h1><p>Jquery1</p>
+  <h1 class="item">Jquery1 class="item"</h1>
+  <h1 id="selected">Jquery1 id="selected"</h1>
+  <h2>Jquery2</h2>
+  <h3>Jquery3</h3>
+</body>
+</html>

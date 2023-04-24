@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html함수 : innerHTML 같은 기능</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    //1번 div태그 : <h1>Header_0</h1>,..
+    $(function() {
+      // $("div").html("<h1>Header</h1>")
+      $("div").each(function(i,items) {
+        $(this).html("<h1>Header_"+i+"</h1>")
+      })
+      $("div").html(function(i) {
+        return "<h1>Header_"+i+"</h1>"
+      })
+      //div 태그의 내용을 alert으로 출력하기
+      // $("div").each(function(i,items) {
+      //   alert($(this).html())
+      // })
+
+      //text() 함수 : html이 아닌 순수 문자열로 인식
+      $("div").text(function(i) {
+        return "<h1>Header_"+i+"</h1>"
+      })
+    })    
+  </script>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+</html>

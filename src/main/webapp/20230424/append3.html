@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>div 태그에 추가하기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      let info = [
+        {name:"홍길동",address:"서울시 금천구"},
+        {name:"김삿갓",address:"서울시 강서구"},
+        {name:"CHAT JJK",address:"서울시 금천구"}
+      ]
+      $("div").append(function(i){
+        let item=info[i]
+        let output = ""
+        output += "<h1>"+item.name+"</h1>"
+        output += "<h2>"+item.address+"</h1>"
+        return output
+      })
+    })
+  </script>
+</head>
+<body>
+  <div>0.</div>
+  <div>1.</div>
+  <div>2.</div>
+</body>
+</html>

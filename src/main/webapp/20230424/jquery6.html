@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nth-child, nth-of-type</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("h3:odd").css({"background":"yellow","color":"blue"})
+      $("h3:even").css({"background":"black","color":"yellow"})
+      //nth-child : 태그랑 상관 없이 부모 밑에서의 위치를 지정하는 것. (ex. tr 밑에 th or td)
+      //부모(body)-자식(h2)
+      // $("h2:nth-child(3n)").css({"background":"black","color":"white"})
+      // $("h2:nth-child(3n+1)").css({"background":"yellow","color":"blue"})
+      // $("h2:nth-child(3n+2)").css({"background":"blue","color":"yellow"}) //0번 인덱스 => 전체 body에서 순서를 매김
+      //nth-of-type : h2 태그만 인식해서 순서 처리
+      $("h2:nth-of-type(3n)").css({"background":"black","color":"white"})
+      $("h2:nth-of-type(3n+1)").css({"background":"yellow","color":"blue"})
+      $("h2:nth-of-type(3n+2)").css({"background":"blue","color":"yellow"})
+      //h1태그의 바탕색을 분홍색으로 설정
+      $("h1").css("background","pink") //h1은 배열인 객체
+      //빨강,오렌지,노랑,초록,파랑,남색으로 설정
+      // $("h1:eq(0)").css("background","red")
+      // $("h1:eq(1)").css("background","orange")
+      // $("h1:eq(2)").css("background","yellow")
+      // $("h1:eq(3)").css("background","green")
+      // $("h1:eq(4)").css("background","blue")
+      // $("h1:eq(5)").css("background","navy")
+      
+      //위 예시를 반복문으로 처리
+
+      //$(태그).each(function(index, element) {}) : 태그 자체가 배열
+      let colors = ["red","orange","yellow","green","blue","navy"];
+      //여기서 element(item)는 h1태그 1개 => h1태그도 length가 6인 배열임
+      // $("h1").each(function(i,item) { //.each(function(index, element) {}) 
+      //   $(this).css("background",colors[i]) //this(현재요소) : h1:eq(i)?
+      // })
+
+      //$.each(배열,function(index, element) {}) : each 안에서 선언된 배열을 반복
+      $.each(colors,function(i,c){
+        $("h1:eq("+i+")").css("background",c)
+      })
+    })
+  </script>
+</head>
+<body>
+  h3태그의 홀수번째를 노랑바탕에 파란글씨, 짝수번째를 검정바탕에 노랑글씨로 설정
+  <h3>H3:Header_0</h3>
+  <h3>H3:Header_1</h3>
+  <h3>H3:Header_2</h3>
+  <h3>H3:Header_3</h3>
+  <h3>H3:Header_4</h3>
+  <h3>H3:Header_5</h3>
+  <hr>
+  h2 태그 중 3의 배수인 경우 검정바탕 흰 글씨, ...
+  <h2>H2:Header_0</h2>
+  <h2>H2:Header_1</h2>
+  <h2>H2:Header_2</h2>
+  <h2>H2:Header_3</h2>
+  <h2>H2:Header_4</h2>
+  <h2>H2:Header_5</h2>
+  <hr>
+  <h1>H1:Header_0</h1>
+  <h1>H1:Header_1</h1>
+  <h1>H1:Header_2</h1>
+  <h1>H1:Header_3</h1>
+  <h1>H1:Header_4</h1>
+  <h1>H1:Header_5</h1>
+</body>
+</html>
