@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("#inbtn").click(function() {
+        $("#card").html("");
+        let text = $("#userNum").val().split("");
+        $(text).each(function(i,items) {
+          $("<img>",{src:"./nums/num"+items+".jpg",width:100,height:100}).appendTo("#card");
+        })        
+      })
+      $("#userNum").keyup(function(event) {
+        if(event.keyCode == 13) {
+          $("#inbtn").click();
+        }
+      })
+    })
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" id="userNum">
+    <input type="button" value="입력" id="inbtn">
+  </div>
+  <div id="card">
+  </div>
+</body>
+</html>

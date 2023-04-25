@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트가 발생한 객체의 위치값</title>
+  <style type="text/css">
+    table {
+      border-spacing:0px;
+      border-collapse:collapse;
+    }
+    .hover { background:green; color:yellow;}
+    .reverse {background:blue;color:white;}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("th").hover(function() {
+        //$(this).parent() => 이벤트 발생 th의 tr
+        //$(this).parent().children() => 이벤트 발생 th의 tr의 모든 자손(th 태그들)
+        //$(this).parent().children().index(this) => th 태그들 중 this 의 index
+        select = $(this).parent().children().index(this) + 1;
+        $(this).addClass("hover");
+        $("td:nth-child(5n+" + select + ")").addClass("hover"); //5로 나눈 나머지에 select를 더한 번째 td
+      }, function() {
+        $(this).removeClass("hover");
+        $("td:nth-child("+select+")").removeClass("hover"); //td:nth-child(3)
+      })
+    })
+    
+  </script>
+</head>
+<body>
+  <table border="1">
+    <tr>
+      <th>이름</th>
+      <th>혈액형</th>
+      <th>지역</th>
+      <th>성별</th>
+      <th>전화</th>
+    </tr>
+
+    <tr>
+      <td>jjk</td>
+      <td>a형</td>
+      <td>가산동</td>
+      <td>남</td>
+      <td>2756</td>
+    </tr>
+    <tr>
+      <td>khb</td>
+      <td>a형</td>
+      <td>부천</td>
+      <td>남</td>
+      <td>1234</td>
+    </tr>
+    <tr>
+      <td>ksb</td>
+      <td>b형</td>
+      <td>시흥동</td>
+      <td>여</td>
+      <td>1534</td>
+    </tr>
+    <tr>
+      <td>htr</td>
+      <td>b형</td>
+      <td>대구</td>
+      <td>여</td>
+      <td>1234</td>
+    </tr>
+    <tr>
+      <td>kdb</td>
+      <td>o형</td>
+      <td>시흥동</td>
+      <td>남</td>
+      <td>1234</td>
+    </tr>
+  </table>
+</body>
+</html>

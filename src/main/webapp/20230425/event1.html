@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 예제1</title>
+  <style type="text/css">
+  .reverse {
+    background : black;
+    color : white;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      //on 함수(이벤트, 함수(handler))
+      $("h1").on("click",function() {
+        //this : h1 태그들 중 이벤트(click)가 발생한 h1태그
+        $(this).html(function(i, item) {
+          return item+ "+"
+        })
+      })
+      $("h1").on({
+        mouseenter : function() {
+          $(this).addClass("reverse")
+        },
+        mouseleave : function() {
+          $(this).removeClass("reverse")
+        }
+      })
+    })
+  </script>
+</head>
+<body>
+  <h1>Header-0</h1>
+  <h1>Header-1</h1>
+  <h1>Header-2</h1>
+</body>
+</html>

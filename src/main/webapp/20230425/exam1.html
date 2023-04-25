@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클릭된 h1 태그의 내용을 alert 창으로 출력하기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("body > h1").click(function() { //body 바로 밑에 있는 h1태그만 이벤트 등록. div>h1은 이벤트 등록이 안됨
+        alert($(this).html())
+      })
+      $("p").click(function() {
+        alert($(this).html())
+      })
+      $("div").click(function() {
+        // alert($(this).html()) //태그까지 같이 출력됨
+        // let h1 = $(this).find("h1").html();
+        // let p = $(this).find("p").html();
+
+        // let h1 = $(this > "h1").html(); //this 에서 > 선택자 사용 불가함 => undefined
+        // let p = $(this > "p").html();
+        
+        let h1 = $("h1", this).html(); //find() 안쓰고 찾는 법
+        let p = $("p", this).html();
+        alert(h1 + "\n" + p) //태그 빼고 내용만 출력됨
+      })
+    })
+  </script>
+</head>
+<body>
+  <h1>Header 0</h1> 
+  <h1>Header 1</h1> 
+  <h1>Header 2</h1> 
+  <div>
+    <h1>DIV Header 0</h1>
+    <p>DIV p 0</p>
+  </div>
+  <div>
+    <h1>DIV Header 1</h1>
+    <p>DIV p 1</p>
+  </div>
+  <div>
+    <h1>DIV Header 2</h1>
+    <p>DIV p 2</p>
+  </div>
+</body>
+</html>

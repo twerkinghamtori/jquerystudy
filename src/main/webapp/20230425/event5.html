@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기본 이벤트 무시하기</title>
+  <style type="text/css">
+    * {
+      margin : 5px;
+      padding : 5px;
+      border : 3px solid black;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("h1").click(function() {
+        $(this).css("background-color","skyblue")
+      })
+      $("a").click(function(event) { //h1내부에 a태그가 있으니까 h1도 클릭된거임
+        $(this).css("background-color","blue")
+        // event.stopPropagation(); //이벤트 전파 방지(h1태그가 같이 클릭되지 않도록)
+        // event.preventDefault(); //태그(a태그)에 설정된 고유의 event를 막음
+        return false; //위 2개 기능을 다 해줌
+      })
+    })
+  </script>
+</head>
+<body>
+  <h1>
+    <a href="http://www.gdu.co.kr">구디아카데미</a>
+  </h1>
+  <h1>맨시티 트래블 ㅊㅊ</h1>
+</body>
+</html>

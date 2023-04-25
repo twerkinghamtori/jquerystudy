@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $("#myform").submit(function() {
+        let name = $("#name",this).val();
+        let pass = $("#password",this).val();
+        alert("이름 : " + name + "\n" +"비밀번호 : " + pass)
+        return false; //submit => action, 근데 action이 없으니까 자기 자신을 다시 호출
+        //submit의 기본 이벤트를 취소하기 위해서 return false;
+      })
+    })
+  </script>
+</head>
+<body>
+  제출 버튼이 클릭되면 입력된 이름과 비밀번호를 alert 창에 출력하기
+  <form id="myform">
+    이름 : <input type="text" name="name" id="name"><br>
+    비밀번호 : <input type="password" name="password" id="password"><br>
+    <input type="submit" value="제출">
+  </form>
+</body>
+</html>

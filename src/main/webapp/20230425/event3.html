@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트 제거</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $("h1").click(function() {
+        $(this).html("CLICKED")
+        $(this).off()  //이벤트 등록 취소(click 이벤트 안에서 실행 -> click 이벤트 등록 취소)
+        $(this).html("?") //..? off해도 실행되나? 1회 click으로 전부다 실행하고 다음 click off 하겠단거?
+        alert("이벤트가 발생했습니다.")
+      })
+    })
+  </script>
+</head>
+<body>
+  <h1>Header-0</h1>
+  <h1>Header-1</h1>
+  <h1>Header-2</h1>
+</body>
+</html>
