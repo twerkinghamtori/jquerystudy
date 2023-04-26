@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fetch 예제</title>
+<script>
+	function loadJsp() {
+		//원격 호출 함수  //javascript 의 fetch 함수
+		fetch("test1.jsp") //서버 요청
+		.then((response) => response.text()) //response : 서버에서 전달한 응답 객체, text() : 응답 메세지
+		//data = 응답 메세지. text()값
+		.then((data) => document.querySelector("#demo").innerHTML = data)
+	}
+</script>
+</head>
+<body>
+	<h2>fetch 함수를 통한 서버 요청</h2>
+	<button type="button" onclick="loadJsp()">요청</button>
+	<div id="demo"></div>
+</body>
+</html>

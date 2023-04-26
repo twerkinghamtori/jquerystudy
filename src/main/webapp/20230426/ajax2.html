@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XMLHttpRequest 객체를 통한 요청</title>
+<script>
+	function loadJspGet() {
+		const xhttp = new XMLHttpRequest();
+		const params = "?name="+document.f.name.value;
+		xhttp.open("GET","test2.jsp"+params);
+		xhttp.send();
+		xhttp.onreadystatechange=callBack; //callBack을 콜백 함수로 등록?
+	}
+	function loadJspPost() {
+		const xhttp = new XMLHttpRequest();
+		const params = "name="+document.f.name.value;
+		xhttp.open("POST","test2.jsp");
+		//post 방식에서 요청 header 부분을 설정
+		xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded;charset=UTF-8")
+		xhttp.send(params) //send() 할 때(서버 요청할 떄) 파라미터 전달
+		xhttp.onreadystatechange=callBack;
+	}
+	
+	function callBack() {
+		if(this.readyState==4 && this.status==200) {
+			alert(this.responseText)
+			document.querySelector("#demo").innerHTML = this.responseText
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="f">
+		<input type="text" name="name">
+	</form>
+	
+	<button type="button" onclick="loadJspGet()">입력(get)</button>
+	<button type="button" onclick="loadJspPost()">입력(post)</button>
+	<div id="demo"></div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>컴포넌트 이동</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <style type="text/css">
+    div {
+      width:50px;
+      height:50px;
+      background-color:skyblue;
+      position:relative;
+      display:block; 
+    }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      $("div").hover(function(){
+        $(this).animate({ //animate : 이동 과정을 보여줌
+          left:300
+        },'slow')
+      }, function() {
+        $(this).animate({
+          left:0
+        },'slow')
+      })
+    })
+  </script>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</body>
+</html>

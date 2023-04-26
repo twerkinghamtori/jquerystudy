@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>json 읽기</title>
+<script>
+	function load(url) {
+		const xhttp = new XMLHttpRequest()
+		xhttp.open("GET",url)
+		xhttp.send()
+		xhttp.onreadystatechange=callBack
+	}
+	function callBack() {
+		if(this.readyState==4 && this.status==200) {
+			let area = document.querySelector("#area")
+			let data = JSON.parse(this.responseText) //응답 내용을 json 형태로 parsing => json(javascript에서 사용하는 객체)객체가 됨
+			// data가 [] 형태니까 배열.
+			for(s of data) {
+				area.innerHTML += '<p>'+s.author.book + ", " + s.author.pubDate + '</p>'
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="json읽기" onclick="load('test.json')">
+	<div id="area"></div>
+</body>
+</html>
