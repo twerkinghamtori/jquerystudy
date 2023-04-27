@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		fetch("../20230426/examtest.jsp")
+		.then((r)=>r.text())
+		.then((data)=> getMax(data))
+	}
+	function getMax(data) {
+			const nums = data.split(",")
+			let max = parseInt(nums[0].trim())
+			let min = parseInt(nums[0].trim())
+			for(let i=1; i<nums.length; i++) {
+				nums[i] = parseInt(nums[i].trim())
+				if(max < nums[i]) max=nums[i]
+				if(min > nums[i]) min=nums[i]
+			}			
+			document.querySelector("#result").innerHTML = "<strong>[" + data + "] 중  최대값 : " + max + "</strong><br>"
+			document.querySelector("#result").innerHTML += "<strong>[" + data + "] 중  최소값 : " + min + "</strong>"
+	}
+</script>
+</head>
+<body>
+	<div id="result"></div>
+</body>
+</html>

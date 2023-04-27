@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--  -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax를 이용한 로그인</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#login").click(function() {
+			let param = {id:$("#id").val(),pass:$("#pass").val()}
+			$.ajax({
+				url : "login.jsp",
+				type : "POST",
+				data : param,
+				success : function(data) {
+					$("#message").html(data)
+				},
+				error : function(e) {
+					alert("서버오류 : " + e.status)
+				}
+			})
+			return false; //submit 기능 실행하지 않도록
+		})
+		$("#btn").click(function() {
+			let id = $("#id").val()
+			$.ajax( {
+				url : "iddup.jsp",
+				type : "POST",
+				data : "id="+id,
+				success : function(data) {
+					$("#iddup").html(data)
+//					if($("#result").is(".find")) { //iddup.jsp에서 class속성을 주면 이렇게도 할 수 있ㅇㅁ
+//						$("#id").val("")
+//					}
+				},
+				error : function(e) {
+					alert("서버오류 : " + e.status)
+				}				
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<form name="f">
+		아이디 : <input type="text" id="id">
+		<input type="button" value="아이디 중복" id="btn"><br>
+		<span id="iddup"></span>
+		비밀번호:<input type="password" id="pass"><br>
+		<input type="submit" value="로그인" id="login"><br>
+	</form>
+	<div id="message"></div>
+</body>
+</html>
