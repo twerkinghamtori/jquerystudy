@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax를 이용하여 xml문서 분석하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn").click(function() {
+			$.ajax("person.xml", {
+				//xml 파일을 읽어옴 => data : String 타입(text)이 아니고 DOM 타입의 데이터임(dom tree의 최상단(root) node)
+				success : function(data) { //responseXml
+					$(data).find("person").each(function() { //dom에서 person 객체를 찾아서 각각 function
+						name = "<li>" + $(this).find("name").text() + "</li>" //person 객체에서 name을 찾아서,..
+						gen = "<li>" + $(this).find("gender").text() + "</li>"
+						part = "<li>" + $(this).find("part").text() + "</li>"
+						$("#person").append("<ul>" + name + gen + part + "</ul>")
+					})
+				}
+			})
+		})
+	})
+</script>
+</head>
+<body>
+	<button id="btn">XML 연습</button>
+	<div id="person"></div>
+</body>
+</html>
